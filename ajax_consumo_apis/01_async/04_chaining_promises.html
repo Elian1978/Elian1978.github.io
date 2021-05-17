@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaining Promises</title>
+</head>
+<body>
+    
+    <ul class="pokemons"></ul>
+
+    <script>
+        const pokemons = document.querySelector('.pokemons')
+
+        fetch('https://pokeapi.co/api/v2/pokemon/25')
+            .then(function(data) { return data.json() })
+            .then(function(poke) {
+                print(poke)
+                return poke
+            })
+            .then(function() {
+                fetch('https://pokeapi.co/api/v2/pokemon/26')
+                    .then(function(data) { return data.json() })
+                    .then(function(poke) {
+                        print(poke)
+                    })
+                    .then(function() {
+                        fetch('https://pokeapi.co/api/v2/pokemon/27')
+                            .then(function(data) { return data.json() })
+                            .then(function(poke) {
+                                print(poke)
+                            })
+                            .then(function() {
+                                fetch('https://pokeapi.co/api/v2/pokemon/28')
+                                    .then(function(data) { return data.json() })
+                                    .then(function(poke) {
+                                        print(poke)
+                                    })
+                                    .then(function() {
+                                        fetch('https://pokeapi.co/api/v2/pokemon/29')
+                                            .then(function(data) { return data.json() })
+                                            .then(function(poke) {
+                                                print(poke)
+                                            })
+                                            .then(function() {
+                                                fetch('https://pokeapi.co/api/v2/pokemon/30')
+                                                    .then(function(data) { return data.json() })
+                                                    .then(function(poke) {
+                                                        print(poke)
+                                                    })
+                                                    .then(function() {
+                                                        fetch('https://pokeapi.co/api/v2/pokemon/31')
+                                                            .then(function(data) { return data.json() })
+                                                            .then(function(poke) {
+                                                                print(poke)
+                                                            })
+                                                            .then(function() {
+                                                                fetch('https://pokeapi.co/api/v2/pokemon/32')
+                                                                    .then(function(data) { return data.json() })
+                                                                    .then(function(poke) {
+                                                                        print(poke)
+                                                                    })
+                                                                    .catch(function(err) { console.error(err)})
+                                                            })
+                                                            .catch(function(err) { console.error(err)})
+                                                    })
+                                                    .catch(function(err) { console.error(err)})
+                                            })
+                                            .catch(function(err) { console.error(err)})
+                                    })
+                                    .catch(function(err) { console.error(err)})
+                            })
+                            .catch(function(err) { console.error(err)})
+                    })
+                    .catch(function(err) { console.error(err)})
+            })
+            .catch(function(err) { console.error(err)})
+
+        function capitalize(poke) {
+            return poke[0].toUpperCase() + poke.substring(1)
+        }
+
+        function print(poke) {
+            const pokeNode = document.createElement('li')
+            pokeNode.className = 'pokemon'
+            const pokeName = document.createTextNode(capitalize(poke.name))
+
+            pokeNode.appendChild(pokeName)
+            pokemons.appendChild(pokeNode)
+        }
+    </script>
+</body>
+</html>

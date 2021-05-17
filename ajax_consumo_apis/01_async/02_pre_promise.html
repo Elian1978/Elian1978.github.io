@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Promise</title>
+</head>
+<body>
+
+   <!--  Tipos de promesas:
+    1-  pending: pendiente, aun no resuelve
+    1 - fullfield: completa de forma exitosa 
+    2 - rejected rechazada-->
+
+    <script>
+        function fetchData() {
+            return new Promise(function(res,rej) {
+                setTimeout(function() {
+                    return res({ id: 25, name: 'Pikachu', order: 35, species: {name: "pikachu", url: "https://pokeapi.co/api/v2/pokemon-species/25/"}, types: {slot: 1, type: { name: "electric", url: "https://pokeapi.co/api/v2/type/13/" }}})
+                    // return rej(Error('La promesa no fue cumplida')) 
+                }, 2500)
+            })
+        }
+
+        fetchData()
+            .then(function(poke) { console.log(poke) })
+            .catch(function(err) { console.error(err) })
+    </script>
+</body>
+</html>

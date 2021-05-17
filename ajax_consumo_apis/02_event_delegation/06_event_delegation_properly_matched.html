@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegation properly matched</title>
+</head>
+<body>
+    <ol id="lista">
+        <li class="elemento" data-position="1">Primer elemento</li>
+        <li class="elemento" data-position="2">Segundo elemento</li>
+        <li class="elemento" data-position="3">Tercer elemento</li>
+    </ol>
+
+    <script>
+        document.addEventListener('click', function(e){
+            if (e.target.matches('.elemento')) {
+                alert('Información adicional del elemento #' + e.target.dataset.position);
+            }
+
+            if (event.target.matches('li#hola')) {
+                console.log('ESTE ES EL ELEMENTO')
+            }
+        });
+
+        const lista = document.querySelector('#lista')
+
+        var li = document.createElement('li');
+        li.className = 'elemento';
+        li.dataset.position = lista.childElementCount + 1;
+        li.appendChild(document.createTextNode('Nuevo elemento'));
+        lista.appendChild(li);
+        
+        var li = document.createElement('li');
+        li.className = 'elemento';
+        li.dataset.position = lista.childElementCount + 1;
+        li.appendChild(document.createTextNode('Nuevo elemento'));
+        lista.appendChild(li);
+    </script>
+</body>
+</html>

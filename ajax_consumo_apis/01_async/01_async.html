@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    
+    <script>
+        console.log('Se inicia el proceso')
+
+        setInterval(() => {
+            console.log('Esto se genera cada 10 segundos')
+        }, 10000)
+
+        console.log('Inicio de 2/3 del proceso')
+
+        setInterval(() => {
+            console.log('Esto se genera cada 5 segundos')
+        }, 5000)
+
+        console.log('Inicio de 3/3 del proceso')
+
+        setInterval(() => {
+            console.log('Esto se genera cada 1 segundo')
+        }, 1000)
+
+        console.log('Término del proceso')
+    </script>
+</body>
+</html>

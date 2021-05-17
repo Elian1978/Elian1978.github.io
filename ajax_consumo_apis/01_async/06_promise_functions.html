@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaining Promises</title>
+</head>
+<body>
+    
+    <ul class="pokemons"></ul>
+
+    <script>
+        const pokemons = document.querySelector('.pokemons')
+
+        const pokemon_arr = [20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
+        pokemon_arr.forEach(function(pokemon) {
+            fetchPokemon(pokemon)
+        })
+
+        function fetchPokemon(id) {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                .then(function(data) { return data.json() })
+                .then(function(poke) {
+                    print(poke)
+                })
+                .catch(function(err) { console.error(err)})
+        }
+
+        function capitalize(poke) {
+            return poke[0].toUpperCase() + poke.substring(1)
+        }
+
+        function print(poke) {
+            const pokeNode = document.createElement('li')
+            pokeNode.className = 'pokemon'
+            const pokeName = document.createTextNode(capitalize(poke.name))
+            
+            const img = document.createElement('img')
+            img.src = poke.sprites.front_default
+            img.className = 'pokemon-img'
+
+            pokeNode.appendChild(img)       
+            pokeNode.appendChild(pokeName)
+            pokemons.appendChild(pokeNode)
+        }
+    </script>
+</body>
+</html>

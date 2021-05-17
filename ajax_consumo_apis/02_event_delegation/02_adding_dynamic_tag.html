@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Dynamic Tag</title>
+</head>
+<body>
+    
+    <ol>
+        <li class="elemento">Primer elemento</li>
+        <li class="elemento">Segundo elemento</li>
+        <li class="elemento">Tercer elemento</li>
+    </ol>
+
+    <script>
+                
+    setTimeout(function() {
+        var li = document.createElement('li');
+        li.className = 'elemento'
+        li.appendChild(document.createTextNode('Nuevo elemento'));
+        document.querySelector('ol').appendChild(li);
+    }, 500);
+
+    var elementos = document.querySelectorAll('.elemento');
+        elementos.forEach(function(elemento, i){
+            elemento.addEventListener('click', function(){
+                alert('Información adicional del elemento '+(i+1));
+            });
+    });
+
+        
+    </script>
+</body>
+</html>

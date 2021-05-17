@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegation</title>
+</head>
+<body>
+    <ol id="lista">
+        <li class="elemento">Primer elemento</li>
+        <li class="elemento">Segundo elemento</li>
+        <li class="elemento">Tercer elemento</li>
+    </ol>
+    <script>
+        const lista = document.querySelector('#lista');
+        lista.addEventListener('click', function(){
+            alert('Información adicional del elemento');
+        });
+        
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode('Nuevo elemento'));
+        lista.appendChild(li);
+    </script>    
+</body>
+</html>

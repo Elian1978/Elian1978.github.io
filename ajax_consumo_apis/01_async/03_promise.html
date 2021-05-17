@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <style>
+        .pokemon-img {
+            height: 2em;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul class="pokemons"></ul>
+​
+    <script>
+        const pokemons = document.querySelector('.pokemons')
+        fetch('https://pokeapi.co/api/v2/pokemon/25')
+            .then(function(data) { 
+                return data.json()
+            })
+            .then(function(poke) {
+                const pokeNode = document.createElement('li')
+                pokeNode.className = 'pokemon'
+                
+                const pokeName = document.createTextNode(capitalize(poke.name))
+                const img = document.createElement('img')
+                img.src = poke.sprites.front_default
+                img.className = 'pokemon-img'
+
+
+                
+                pokeNode.appendChild(img)
+                pokeNode.appendChild(pokeName)
+                pokemons.appendChild(pokeNode)
+                return poke
+            })
+            .then(function(info) { console.log(info)})
+            .catch(function(err) { console.error(err)})
+            
+        function capitalize(poke) {
+            return poke[0].toUpperCase() + poke.substring(1)
+        }
+    </script>
+</body>
+</html>

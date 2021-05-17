@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegation with event</title>
+</head>
+<body>
+    <ol id="lista">
+        <li class="elemento" data-position="1">Primer elemento</li>
+        <li class="elemento" data-position="2">Segundo elemento</li>
+        <li class="elemento" data-position="3">Tercer elemento</li>
+    </ol>
+
+    <script>
+        const lista = document.querySelector('#lista');
+        lista.addEventListener('click', function(event){
+            console.log('Información adicional del elemento #' + event.target.dataset.position);
+        });
+        
+        var li = document.createElement('li');
+        li.dataset.position = lista.childElementCount + 1;
+        li.appendChild(document.createTextNode('Nuevo elemento'));
+        lista.appendChild(li);
+    </script>    
+</body>
+</html>
